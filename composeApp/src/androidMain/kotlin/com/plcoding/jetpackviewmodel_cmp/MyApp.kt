@@ -1,6 +1,6 @@
 package com.plcoding.jetpackviewmodel_cmp
 
-import KoinInitializer
+import com.recallit.app.KoinInitializer
 import android.app.Application
 
 class MyApp: Application() {

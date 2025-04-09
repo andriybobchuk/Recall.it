@@ -55,7 +55,7 @@ composeApp/
 └── src/
     └── commonMain/
         └── kotlin/
-            └── com/example/recallit/
+            └── com/recallit/
                 ├── data/             // shared implementations
                 ├── domain/           // use cases & interfaces
                 ├── presentation/
@@ -66,3 +66,35 @@ composeApp/
                 └── utils/
 </pre>
 
+And full version of `kotlin/com/recallit`:
+
+<pre>
+com/
+└── example/
+└── recallit/
+├── data/                       ← Data layer (Repositories, Data Sources, Mappers)
+│   ├── local/                  ← Local data sources (e.g., databases, SharedPreferences)
+│   ├── remote/                 ← Remote data sources (e.g., API calls, Network)
+│   └── models/                 ← Shared data models (e.g., DTOs)
+├── domain/                     ← Domain layer (Business logic, Use cases, Interfaces)
+│   ├── models/                 ← Domain models (e.g., User, Item, etc.)
+│   ├── repositories/           ← Repository interfaces
+│   └── usecases/               ← Use case implementations (e.g., AddItem, FetchUser)
+├── presentation/                ← Presentation layer (ViewModels, UI logic)
+│   ├── screens/                ← Composables, Screen-specific ViewModels
+│   ├── ui/                     ← Common UI components (e.g., Buttons, Text fields)
+│   └── navigation/             ← Navigation components (e.g., Decompose for multiplatform)
+├── di/                          ← Dependency Injection (e.g., Koin modules)
+│   ├── AppModule.kt            ← Global Koin module
+│   ├── DataModule.kt           ← Data layer Koin bindings
+│   └── ViewModelModule.kt      ← ViewModel Koin bindings
+├── utils/                       ← Utility classes (e.g., extensions, helpers)
+├── app/                         ← Application-level configuration (e.g., App initialization)
+│   ├── App.kt                  ← App startup logic (commonMain or androidMain)
+│   └── KoinInitializer.kt      ← Koin initialization (commonMain)
+├── navigation/                  ← Navigation-related logic (e.g., Decompose)
+├── resources/                   ← Shared resources (commonMain or platform-specific)
+└── platform/                    ← Platform-specific code (androidMain, iosMain, etc.)
+├── android/                ← Android-specific code
+└── ios/                    ← iOS-specific code
+</pre>

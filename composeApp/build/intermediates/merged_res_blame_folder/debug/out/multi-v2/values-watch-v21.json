@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.plcoding.jetpackviewmodel_cmp.composeApp-mergeDebugResources-53:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/Users/andriybobchuk/.gradle/caches/transforms-4/e927f4f63558bf2ace4c2abbad51a378/transformed/appcompat-1.6.1/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}

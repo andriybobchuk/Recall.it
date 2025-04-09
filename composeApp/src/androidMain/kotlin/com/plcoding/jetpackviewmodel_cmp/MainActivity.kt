@@ -1,6 +1,6 @@
 package com.plcoding.jetpackviewmodel_cmp
 
-import App
+import com.recallit.app.App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
