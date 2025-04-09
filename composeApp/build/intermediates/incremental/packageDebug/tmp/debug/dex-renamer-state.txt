@@ -1,4 +1,4 @@
-#Wed Apr 09 22:53:52 CEST 2025
+#Wed Apr 09 22:56:03 CEST 2025
 base.0=/Users/andriybobchuk/dev/Recallit/composeApp/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/andriybobchuk/dev/Recallit/composeApp/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.10=/Users/andriybobchuk/dev/Recallit/composeApp/build/intermediates/dex/debug/mergeProjectDexDebug/8/classes.dex
