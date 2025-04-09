@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.recallit.presentation.packs_screen.PacksScreen
 
 @Composable
 fun NavigationHost() {
@@ -17,10 +18,10 @@ fun NavigationHost() {
         modifier = Modifier.fillMaxSize()
     ) {
         composable(Screens.packs) {
-           //PacksScreen(navController)
+           PacksScreen()
         }
         composable(Screens.cards) {
-            //CardsScreen(navController)
+            //CardsScreen()
         }
     }
 }
