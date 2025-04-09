@@ -1,14 +1,68 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# 📦 Intro for Viktor
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+- We are using **Compose Multiplatform (KMP + Jetpack Compose)**.
+- Our shared module is named `composeApp`, which is perfectly fine (just a naming preference).
+- We don't have a dedicated `androidApp` module — Android code is built and run directly from `composeApp/androidMain`.
+- We do have a native **SwiftUI shell (`iosApp`)** for integrating with the shared `composeApp` code on iOS.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+---
+
+## 🗂 High-level Package Structure
+
+<pre>
+Recallit/
+├── composeApp/              ← Shared Kotlin Multiplatform module (UI + logic)
+│   ├── androidMain/         ← Android-specific code
+│   ├── commonMain/          ← Shared Compose UI and business logic
+│   └── iosMain/             ← iOS-specific code
+│
+├── iosApp/                  ← iOS entrypoint (SwiftUI shell)
+│   ├── iosApp.xcodeproj     ← Xcode project
+│   └── iosApp/              ← SwiftUI content + asset management
+│
+├── gradle/                  ← Gradle wrapper + version catalog
+│
+├── build.gradle.kts         ← Root build file
+├── settings.gradle.kts      ← Includes `composeApp` and `iosApp`
+├── gradle.properties        ← Global project config
+├── README.md
+└── gradlew / gradlew.bat    ← Wrapper scripts
+</pre>
+
+---
+
+# 🧱 Architecture Guide
+
+We follow **canonical Android Clean Architecture**.  
+We keep the same layered separation but implement it inside `commonMain` (the shared module).
+
+### 📐 Traditional Clean Architecture (Android)
+
+<pre>
+com.example.myapp
+├── data        // Repository implementations, remote/local data sources
+├── domain      // Use cases, interfaces (e.g., Repository)
+├── presentation
+│   ├── screens // ViewModels + UI logic
+│   └── ui      // Compose UI
+</pre>
 
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+### 🌐 Compose Multiplatform Equivalent (`commonMain`)
+
+<pre>
+composeApp/
+└── src/
+    └── commonMain/
+        └── kotlin/
+            └── com/example/recallit/
+                ├── data/             // shared implementations
+                ├── domain/           // use cases & interfaces
+                ├── presentation/
+                │   ├── screens/      // screen-level logic
+                │   └── ui/           // composables
+                ├── di/               // dependency injection
+                ├── navigation/       // screen components / Decompose
+                └── utils/
+</pre>
+
