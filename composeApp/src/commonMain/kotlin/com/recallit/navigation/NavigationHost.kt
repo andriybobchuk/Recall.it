@@ -18,10 +18,14 @@ fun NavigationHost() {
         modifier = Modifier.fillMaxSize()
     ) {
         composable(Screens.packs) {
-           PacksScreen()
+           PacksScreen(
+               bottomNavbar = { BottomNavigationBar(navController, 0) },
+           )
         }
         composable(Screens.cards) {
-            //CardsScreen()
+//            CardsScreen(
+//                bottomNavbar = { BottomNavigationBar(navController, 1) },
+//            )
         }
     }
 }

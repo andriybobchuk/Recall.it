@@ -14,12 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.recallit.data.model.Pack
 import com.recallit.data.repository.DummyCoreRepositoryImpl
+import com.recallit.navigation.BottomNavigationBar
 import com.recallit.presentation.component.Toolbars
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PacksScreen(
  //   viewModel: PacksViewModel = koinViewModel()
+    bottomNavbar: @Composable () -> Unit
 ) {
     val packs = DummyCoreRepositoryImpl().getPacks()
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
@@ -30,6 +32,9 @@ fun PacksScreen(
                 title = "My Packs",
                 scrollBehavior = scrollBehavior
             )
+        },
+        bottomBar = {
+            bottomNavbar()
         },
         floatingActionButton = {
             FloatingActionButton(
