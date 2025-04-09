@@ -43,10 +43,14 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
+            // Philipp
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.lifecycle.viewmodel)
             implementation(libs.navigation.compose)
+
+            // Andrii
+            implementation(compose.material3)
         }
     }
 }

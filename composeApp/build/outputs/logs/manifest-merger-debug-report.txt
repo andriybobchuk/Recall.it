@@ -18,6 +18,7 @@ MERGED from [androidx.navigation:navigation-compose:2.7.7] /Users/andriybobchuk/
 MERGED from [androidx.navigation:navigation-runtime-ktx:2.7.7] /Users/andriybobchuk/.gradle/caches/transforms-4/4ce4c0ce9cffc424bc3204c1848541df/transformed/navigation-runtime-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] /Users/andriybobchuk/.gradle/caches/transforms-4/4d4e756f174fc051ad7f8ac2ff8fe54f/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity-ktx:1.9.0] /Users/andriybobchuk/.gradle/caches/transforms-4/ebaf945787b77eace732f905a7ac882a/transformed/activity-ktx-1.9.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /Users/andriybobchuk/.gradle/caches/transforms-4/a2e651ebd14a6e9c4ad6dcd16f300c4b/transformed/material3-release/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity-compose:1.9.0] /Users/andriybobchuk/.gradle/caches/transforms-4/d4b206c0b268629aeaa95620e541d4cb/transformed/activity-compose-1.9.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-ripple-android:1.6.4] /Users/andriybobchuk/.gradle/caches/transforms-4/ac6189fea5988f2be8577d4aa8d44191/transformed/material-ripple-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.4] /Users/andriybobchuk/.gradle/caches/transforms-4/0cdc889923d9f530cc3f1aa25c193e3d/transformed/material-icons-core-release/AndroidManifest.xml:2:1-7:12
@@ -39,8 +40,8 @@ MERGED from [androidx.compose.foundation:foundation-layout-android:1.6.6] /Users
 MERGED from [androidx.compose.animation:animation-core-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/136fb70156a494eee7a3f134b121ac6a/transformed/animation-core-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/f4474aa1c4202e346111fa904627d4e2/transformed/animation-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-unit-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/33b2084744a23da58a793f5af8e25c74/transformed/ui-unit-release/AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/2deeebf9e63f124a924200e5f0b949e6/transformed/ui-graphics-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-geometry-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/cfa97986e5428ad17f95ef7d806610c5/transformed/ui-geometry-release/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/2deeebf9e63f124a924200e5f0b949e6/transformed/ui-graphics-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-util-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/73eadf2ddabcedef075e0f1cc2ba05f4/transformed/ui-util-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/09ba93b17c7055c3d5468a2a0185457a/transformed/ui-tooling-data-release/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-text-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/d62b06646dfc6d047b08bd00be1616ae/transformed/ui-text-release/AndroidManifest.xml:2:1-7:12
@@ -166,6 +167,8 @@ MERGED from [androidx.navigation:navigation-runtime:2.7.7] /Users/andriybobchuk/
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] /Users/andriybobchuk/.gradle/caches/transforms-4/4d4e756f174fc051ad7f8ac2ff8fe54f/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity-ktx:1.9.0] /Users/andriybobchuk/.gradle/caches/transforms-4/ebaf945787b77eace732f905a7ac882a/transformed/activity-ktx-1.9.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-ktx:1.9.0] /Users/andriybobchuk/.gradle/caches/transforms-4/ebaf945787b77eace732f905a7ac882a/transformed/activity-ktx-1.9.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /Users/andriybobchuk/.gradle/caches/transforms-4/a2e651ebd14a6e9c4ad6dcd16f300c4b/transformed/material3-release/AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.2.1] /Users/andriybobchuk/.gradle/caches/transforms-4/a2e651ebd14a6e9c4ad6dcd16f300c4b/transformed/material3-release/AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity-compose:1.9.0] /Users/andriybobchuk/.gradle/caches/transforms-4/d4b206c0b268629aeaa95620e541d4cb/transformed/activity-compose-1.9.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity-compose:1.9.0] /Users/andriybobchuk/.gradle/caches/transforms-4/d4b206c0b268629aeaa95620e541d4cb/transformed/activity-compose-1.9.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-ripple-android:1.6.4] /Users/andriybobchuk/.gradle/caches/transforms-4/ac6189fea5988f2be8577d4aa8d44191/transformed/material-ripple-release/AndroidManifest.xml:5:5-44
@@ -208,10 +211,10 @@ MERGED from [androidx.compose.animation:animation-android:1.6.6] /Users/andriybo
 MERGED from [androidx.compose.animation:animation-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/f4474aa1c4202e346111fa904627d4e2/transformed/animation-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-unit-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/33b2084744a23da58a793f5af8e25c74/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-unit-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/33b2084744a23da58a793f5af8e25c74/transformed/ui-unit-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/2deeebf9e63f124a924200e5f0b949e6/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
-MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/2deeebf9e63f124a924200e5f0b949e6/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-geometry-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/cfa97986e5428ad17f95ef7d806610c5/transformed/ui-geometry-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-geometry-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/cfa97986e5428ad17f95ef7d806610c5/transformed/ui-geometry-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/2deeebf9e63f124a924200e5f0b949e6/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/2deeebf9e63f124a924200e5f0b949e6/transformed/ui-graphics-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-util-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/73eadf2ddabcedef075e0f1cc2ba05f4/transformed/ui-util-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-util-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/73eadf2ddabcedef075e0f1cc2ba05f4/transformed/ui-util-release/AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.6.6] /Users/andriybobchuk/.gradle/caches/transforms-4/09ba93b17c7055c3d5468a2a0185457a/transformed/ui-tooling-data-release/AndroidManifest.xml:5:5-44

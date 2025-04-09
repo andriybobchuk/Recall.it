@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.recallit.navigation.NavigationHost
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -25,25 +26,26 @@ import org.koin.compose.currentKoinScope
 fun App() {
     MaterialTheme {
         KoinContext {
-            val navController = rememberNavController()
-            NavHost(
-                navController = navController,
-                startDestination = "screenA"
-            ) {
-                composable("screenA") {
-                    val viewModel = koinViewModel<MainViewModel>()
-                    val timer by viewModel.timer.collectAsState()
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = timer.toString()
-                        )
-                    }
-                }
-            }
+            NavigationHost()
+//            val navController = rememberNavController()
+//            NavHost(
+//                navController = navController,
+//                startDestination = "screenA"
+//            ) {
+//                composable("screenA") {
+//                    val viewModel = koinViewModel<MainViewModel>()
+//                    val timer by viewModel.timer.collectAsState()
+//                    Box(
+//                        modifier = Modifier
+//                            .fillMaxSize(),
+//                        contentAlignment = Alignment.Center
+//                    ) {
+//                        Text(
+//                            text = timer.toString()
+//                        )
+//                    }
+//                }
+//            }
         }
     }
 }
