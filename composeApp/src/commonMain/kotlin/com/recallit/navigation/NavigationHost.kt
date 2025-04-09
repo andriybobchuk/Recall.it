@@ -23,9 +23,7 @@ fun NavigationHost() {
            )
         }
         composable(Screens.cards) {
-//            CardsScreen(
-//                bottomNavbar = { BottomNavigationBar(navController, 1) },
-//            )
+//            CardsScreen()
         }
     }
 }

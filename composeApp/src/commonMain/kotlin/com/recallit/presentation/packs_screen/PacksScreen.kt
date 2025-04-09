@@ -2,7 +2,6 @@ package com.recallit.presentation.packs_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -12,18 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.recallit.app.koinViewModel
 import com.recallit.data.model.Pack
-import com.recallit.data.repository.DummyCoreRepositoryImpl
-import com.recallit.navigation.BottomNavigationBar
 import com.recallit.presentation.component.Toolbars
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PacksScreen(
- //   viewModel: PacksViewModel = koinViewModel()
+    viewModel: PacksViewModel = koinViewModel(),
     bottomNavbar: @Composable () -> Unit
 ) {
-    val packs = DummyCoreRepositoryImpl().getPacks()
+    val packs = viewModel.packs.value
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     Scaffold(
