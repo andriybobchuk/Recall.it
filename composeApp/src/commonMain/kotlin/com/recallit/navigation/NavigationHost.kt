@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.recallit.presentation.cards_screen.CardsScreen
 import com.recallit.presentation.packs_screen.PacksScreen
 
 @Composable
@@ -19,11 +20,14 @@ fun NavigationHost() {
     ) {
         composable(Screens.packs) {
            PacksScreen(
-               bottomNavbar = { BottomNavigationBar(navController, 0) },
+               onCardClick = { navController.navigate(Screens.cards) },
+               bottomNavbar = { BottomNavigationBar(navController, 0) }
            )
         }
         composable(Screens.cards) {
-//            CardsScreen()
+            CardsScreen(
+                onBackClick = { navController.navigateUp() }
+            )
         }
     }
 }

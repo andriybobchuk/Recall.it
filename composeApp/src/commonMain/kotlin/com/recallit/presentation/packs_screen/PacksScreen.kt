@@ -19,6 +19,7 @@ import com.recallit.presentation.component.Toolbars
 @Composable
 fun PacksScreen(
     viewModel: PacksViewModel = koinViewModel(),
+    onCardClick: () -> Unit,
     bottomNavbar: @Composable () -> Unit
 ) {
     val packs = viewModel.packs.value
@@ -50,7 +51,7 @@ fun PacksScreen(
                     contentPadding = PaddingValues(8.dp)
                 ) {
                     items(packs.size) { index ->
-                        PackCard(pack = packs[index])
+                        PackCard(pack = packs[index], onCardClick = onCardClick)
                     }
                 }
             }
@@ -59,13 +60,17 @@ fun PacksScreen(
 }
 
 @Composable
-fun PackCard(pack: Pack) {
+fun PackCard(
+    pack: Pack,
+    onCardClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
             .height(150.dp),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(16.dp),
+        onClick = onCardClick
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
