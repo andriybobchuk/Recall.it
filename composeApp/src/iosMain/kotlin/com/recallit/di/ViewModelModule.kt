@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 actual val viewModelModule = module {
     single { PacksViewModel(repository = get()) }
-    single { CardsViewModel(repository = get()) }
+    factory { (packId: Int) -> CardsViewModel(packId, get()) }
 
     single<CoreRepository> { DummyCoreRepositoryImpl() }
 }

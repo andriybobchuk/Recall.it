@@ -19,7 +19,7 @@ import com.recallit.presentation.component.Toolbars
 @Composable
 fun PacksScreen(
     viewModel: PacksViewModel = koinViewModel(),
-    onCardClick: () -> Unit,
+    onPackClick: (packId: Int) -> Unit,
     bottomNavbar: @Composable () -> Unit
 ) {
     val packs = viewModel.packs.value
@@ -51,7 +51,7 @@ fun PacksScreen(
                     contentPadding = PaddingValues(8.dp)
                 ) {
                     items(packs.size) { index ->
-                        PackCard(pack = packs[index], onCardClick = onCardClick)
+                        PackCard(pack = packs[index], onCardClick = { onPackClick(packs[index].id) })
                     }
                 }
             }

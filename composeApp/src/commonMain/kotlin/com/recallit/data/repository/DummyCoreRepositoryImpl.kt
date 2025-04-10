@@ -9,6 +9,22 @@ class DummyCoreRepositoryImpl : CoreRepository {
 
     private val packs = listOf(
         Pack(
+            id = 0,
+            title = "Kotlin",
+            cards = listOf(
+                Card(id = 0, front = "Why Kotlin is better than Java?", back = "" +
+                        "- Data classes\n" +
+                        "- Coroutines & Flows\n" +
+                        "- Primary constructors, default args and named parameters\n" +
+                        "- Companion objects\n" +
+                        "- Iteroperability with java"),
+                Card(id = 1, front = "Auto-generated functions of Data classes?", back = "equals, hasCode, toString, copy, componentN"),
+                Card(id = 2, front = "Constructors in data classes", back = "Data classes must declare at least one property in the primary constructor"),
+                Card(id = 3, front = "Can you inherit data class?", back = "Data classes are final by default and cannot be open"),
+                Card(id = 4, front = "Can data class not have any params?", back = "Yes, its called data object"),
+            )
+        ),
+        Pack(
             id = 1,
             title = "Math Pack",
             cards = listOf(

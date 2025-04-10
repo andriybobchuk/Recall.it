@@ -2,12 +2,16 @@ package com.recallit.presentation.cards_screen
 
 import androidx.lifecycle.ViewModel
 import com.recallit.data.model.Card
+import com.recallit.data.model.Pack
 import com.recallit.data.model.Status
 import com.recallit.domain.repository.CoreRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class CardsViewModel(private val repository: CoreRepository) : ViewModel() {
+class CardsViewModel(
+    packId: Int,
+    private val repository: CoreRepository
+) : ViewModel() {
 
     private var _currentIndex = MutableStateFlow(0)
     val currentIndex: StateFlow<Int> get() = _currentIndex
@@ -15,22 +19,19 @@ class CardsViewModel(private val repository: CoreRepository) : ViewModel() {
     private var _currentCard = MutableStateFlow<Card?>(null)
     val currentCard: StateFlow<Card?> get() = _currentCard
 
+    private var _currentPack = MutableStateFlow<Pack?>(null)
+    val currentPack: StateFlow<Pack?> get() = _currentPack
+
+    private val packCards = repository.getPackCards(packId)
+    private val totalCards = packCards.size
+
     init {
         loadNextCard()
     }
 
     fun loadNextCard() {
-        val current = _currentIndex.value
-        val packCards = repository.getPackCards(1)
-        if (current < packCards.size) {
-            _currentCard.value = packCards[current]
-        }
-    }
-
-    fun loadPreviousCard() {
-        if (_currentIndex.value > 0) {
-            _currentIndex.value -= 1
-            loadNextCard()
+        if (_currentIndex.value < totalCards) {
+            _currentCard.value = packCards[_currentIndex.value]
         }
     }
 
@@ -47,8 +48,10 @@ class CardsViewModel(private val repository: CoreRepository) : ViewModel() {
     }
 
     fun goToNextCard() {
-        _currentIndex.value += 1
-        loadNextCard()
+        if (_currentIndex.value < totalCards - 1) {
+            _currentIndex.value += 1
+            loadNextCard()
+        }
     }
 
     fun goToPreviousCard() {
@@ -56,5 +59,14 @@ class CardsViewModel(private val repository: CoreRepository) : ViewModel() {
             _currentIndex.value -= 1
             loadNextCard()
         }
+    }
+
+    // For swipe functionality:
+    fun onSwipeLeft() {
+        goToPreviousCard()
+    }
+
+    fun onSwipeRight() {
+        goToNextCard()
     }
 }

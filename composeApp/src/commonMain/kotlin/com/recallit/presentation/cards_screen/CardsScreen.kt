@@ -1,5 +1,6 @@
 package com.recallit.presentation.cards_screen
 
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -14,21 +15,25 @@ import com.recallit.app.koinViewModel
 import com.recallit.data.model.Card
 import com.recallit.data.model.Status
 import com.recallit.presentation.component.Toolbars
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardsScreen(
-    viewModel: CardsViewModel = koinViewModel(),
+    packId: Int,
+    viewModel: CardsViewModel = koinViewModel(packId),
     onBackClick: () -> Unit
 ) {
     val currentCard by viewModel.currentCard.collectAsState()
     val currentIndex by viewModel.currentIndex.collectAsState()
+    val currentPack by viewModel.currentPack.collectAsState()
+    val totalCards: Int = currentPack?.cards?.size?:0
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
         topBar = {
             Toolbars.Primary(
-                title = "Roman Empire",
+                title = currentPack?.title?:"",
                 showBackButton = true,
                 onBackClick = onBackClick,
                 scrollBehavior = scrollBehavior
@@ -41,14 +46,26 @@ fun CardsScreen(
                     .padding(it)
             ) {
                 LinearProgressIndicator(
-                    progress = if (currentCard != null) currentIndex.toFloat() / 10f else 0f, // Dummy max 10
+                    progress = {
+                        if (currentCard != null && totalCards > 0) {
+                            currentIndex.toFloat() / totalCards
+                        } else {
+                            0f
+                        }
+                    },
                     modifier = Modifier.padding(16.dp)
                 )
+
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 if (currentCard != null) {
-                    FlipCard(currentCard!!)
+                    FlipCard(
+                        card = currentCard!!,
+                        onCardFlip = { viewModel.flipCard() },
+                        onSwipeLeft = { viewModel.goToPreviousCard() },
+                        onSwipeRight = { viewModel.goToNextCard() }
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -72,7 +89,12 @@ fun CardsScreen(
 }
 
 @Composable
-fun FlipCard(card: Card) {
+fun FlipCard(
+    card: Card,
+    onCardFlip: () -> Unit,
+    onSwipeLeft: () -> Unit,
+    onSwipeRight: () -> Unit
+) {
     var isFlipped by remember { mutableStateOf(false) }
 
     Box(
@@ -80,8 +102,17 @@ fun FlipCard(card: Card) {
             .fillMaxWidth()
             .height(400.dp)
             .pointerInput(Unit) {
+                detectHorizontalDragGestures { _, dragAmount ->
+                    // Swiping left or right to change cards
+                    if (dragAmount > 0) {
+                        onSwipeLeft()  // Swipe to the left (previous card)
+                    } else if (dragAmount < 0) {
+                        onSwipeRight()  // Swipe to the right (next card)
+                    }
+                }
                 detectTapGestures(onTap = {
                     isFlipped = !isFlipped
+                    onCardFlip() // Trigger the flip action in the ViewModel
                 })
             }
     ) {

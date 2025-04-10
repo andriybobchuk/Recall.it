@@ -8,6 +8,7 @@ import com.recallit.navigation.NavigationHost
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import org.koin.compose.currentKoinScope
+import org.koin.core.parameter.parametersOf
 
 @Composable
 @Preview
@@ -24,5 +25,13 @@ inline fun <reified T: ViewModel> koinViewModel(): T {
     val scope = currentKoinScope()
     return viewModel {
         scope.get<T>()
+    }
+}
+
+@Composable
+inline fun <reified T : ViewModel> koinViewModel(vararg params: Any): T {
+    val scope = currentKoinScope()
+    return viewModel {
+        scope.get<T> { parametersOf(*params) }
     }
 }
