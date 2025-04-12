@@ -2,8 +2,6 @@ package com.recallit.presentation.cards_screen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -15,16 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.recallit.app.koinViewModel
 import com.recallit.data.model.Card
 import com.recallit.data.model.Status
 import com.recallit.presentation.component.Toolbars
-import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -40,7 +35,7 @@ fun CardsScreen(
     Scaffold(
         topBar = {
             Toolbars.Primary(
-                title = currentPack?.title?:"",
+                title = currentPack?.title ?: "",
                 showBackButton = true,
                 onBackClick = onBackClick,
                 scrollBehavior = scrollBehavior
@@ -52,7 +47,7 @@ fun CardsScreen(
                     .fillMaxSize()
                     .padding(it)
             ) {
-                val totalCards: Int = currentPack?.cards?.size?:0
+                val totalCards: Int = currentPack?.cards?.size ?: 0
                 val pagerState = rememberPagerState(pageCount = { totalCards })
 
                 ProgressIndicator(pagerState.currentPage, totalCards)
@@ -145,7 +140,12 @@ fun CardStatusIndicatorRow(
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         StatusItem(color = MaterialTheme.colorScheme.error, label = "Learning", count = learningCount, hideLabel = hideLabels)
-        StatusItem(color = MaterialTheme.colorScheme.outline.copy(.7f), label = "Reviewing", count = unansweredCount, hideLabel = hideLabels)
+        StatusItem(
+            color = MaterialTheme.colorScheme.outline.copy(.7f),
+            label = "Reviewing",
+            count = unansweredCount,
+            hideLabel = hideLabels
+        )
         StatusItem(color = MaterialTheme.colorScheme.primary, label = "Right", count = rightCount, hideLabel = hideLabels)
     }
 }
