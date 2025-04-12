@@ -26,18 +26,13 @@ class CardsViewModel(
     private val totalCards = packCards.size
 
     init {
-        loadNextCard()
+        _currentPack.value = repository.getPack(packId)
+        setCurrentCard(0)
     }
 
-    fun loadNextCard() {
+    fun setCurrentCard(index: Int) {
         if (_currentIndex.value < totalCards) {
-            _currentCard.value = packCards[_currentIndex.value]
-        }
-    }
-
-    fun flipCard() {
-        _currentCard.value?.let {
-            _currentCard.value = it.copy(status = if (it.status == Status.CORRECT) Status.WRONG else Status.CORRECT)
+            _currentCard.value = packCards[index]
         }
     }
 
@@ -45,28 +40,5 @@ class CardsViewModel(
         _currentCard.value?.let {
             repository.changeCardStatus(it.id, status)
         }
-    }
-
-    fun goToNextCard() {
-        if (_currentIndex.value < totalCards - 1) {
-            _currentIndex.value += 1
-            loadNextCard()
-        }
-    }
-
-    fun goToPreviousCard() {
-        if (_currentIndex.value > 0) {
-            _currentIndex.value -= 1
-            loadNextCard()
-        }
-    }
-
-    // For swipe functionality:
-    fun onSwipeLeft() {
-        goToPreviousCard()
-    }
-
-    fun onSwipeRight() {
-        goToNextCard()
     }
 }

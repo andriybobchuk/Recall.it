@@ -54,6 +54,10 @@ class DummyCoreRepositoryImpl : CoreRepository {
         return packs
     }
 
+    override fun getPack(id: Int): Pack? {
+        return packs.find { it.id == id }
+    }
+
     override fun getPackCards(packId: Int): List<Card> {
         return packs.find { it.id == packId }?.cards ?: emptyList()
     }

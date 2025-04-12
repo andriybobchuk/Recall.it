@@ -3,7 +3,16 @@
   <component name="deploymentTargetSelector">
     <selectionStates>
       <SelectionState runConfigName="composeApp">
-        <option name="selectionMode" value="DROPDOWN" />
+        <option name="selectionMode" value="DIALOG" />
+        <DialogSelection>
+          <targets>
+            <Target type="DEFAULT_BOOT">
+              <handle>
+                <DeviceId pluginId="LocalEmulator" identifier="path=/Users/andriybobchuk/.android/avd/Pixel_8_API_35_2.avd" />
+              </handle>
+            </Target>
+          </targets>
+        </DialogSelection>
       </SelectionState>
     </selectionStates>
   </component>
