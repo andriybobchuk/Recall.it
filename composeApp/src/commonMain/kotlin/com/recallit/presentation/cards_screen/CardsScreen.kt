@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.recallit.app.koinViewModel
@@ -54,6 +56,14 @@ fun CardsScreen(
                 val pagerState = rememberPagerState(pageCount = { totalCards })
 
                 ProgressIndicator(pagerState.currentPage, totalCards)
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                CardStatusIndicatorRow(
+                    learningCount = currentPack?.cards?.count { it.status == Status.WRONG },
+                    unansweredCount = currentPack?.cards?.count { it.status == Status.UNANSWERED },
+                    rightCount = currentPack?.cards?.count { it.status == Status.CORRECT }
+                )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -104,7 +114,6 @@ fun ProgressIndicator(
             if (totalCount <= 1) 1f else currentIndex.toFloat() / (totalCount - 1).toFloat()
         }
     }
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.fillMaxWidth()
@@ -119,6 +128,55 @@ fun ProgressIndicator(
             text = "${currentIndex + 1}/$totalCount",
             style = MaterialTheme.typography.bodyLarge,
             modifier = modifier.padding(horizontal = 18.dp)
+        )
+    }
+}
+
+@Composable
+fun CardStatusIndicatorRow(
+    learningCount: Int?,
+    unansweredCount: Int?,
+    rightCount: Int?,
+    hideLabels: Boolean = false,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        StatusItem(color = MaterialTheme.colorScheme.error, label = "Learning", count = learningCount, hideLabel = hideLabels)
+        StatusItem(color = MaterialTheme.colorScheme.outline.copy(.7f), label = "Reviewing", count = unansweredCount, hideLabel = hideLabels)
+        StatusItem(color = MaterialTheme.colorScheme.primary, label = "Right", count = rightCount, hideLabel = hideLabels)
+    }
+}
+
+@Composable
+private fun StatusItem(
+    color: Color,
+    label: String,
+    count: Int?,
+    hideLabel: Boolean = false,
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(
+            modifier = Modifier
+                .size(12.dp)
+                .clip(CircleShape)
+                .background(color)
+        )
+        if (!hideLabel) {
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = label,
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.Gray
+            )
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = count.toString(),
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold
         )
     }
 }
@@ -141,7 +199,9 @@ fun FlashCard(card: Card) {
             Text(
                 text = if (isFrontSide) card.front else card.back,
                 style = if (isFrontSide) MaterialTheme.typography.titleLarge else MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(16.dp),
+                fontWeight = if (isFrontSide) FontWeight.Bold else FontWeight.Normal,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(32.dp),
             )
         }
     }
