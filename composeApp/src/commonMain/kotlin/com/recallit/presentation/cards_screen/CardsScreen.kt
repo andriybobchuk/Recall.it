@@ -80,19 +80,10 @@ fun CardsScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Button(onClick = { viewModel.changeCardStatus(Status.CORRECT) }) {
-                        Text(text = "Correct")
-                    }
-                    Button(onClick = { viewModel.changeCardStatus(Status.WRONG) }) {
-                        Text(text = "Wrong")
-                    }
-                }
+                AnswerControls(
+                    onWrongAnswerClick = { viewModel.changeCardStatus(Status.WRONG) },
+                    onCorrectAnswerClick = { viewModel.changeCardStatus(Status.CORRECT) }
+                )
             }
         }
     )
@@ -203,6 +194,26 @@ fun FlashCard(card: Card) {
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(32.dp),
             )
+        }
+    }
+}
+
+@Composable
+fun AnswerControls(
+    onCorrectAnswerClick: () -> Unit,
+    onWrongAnswerClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        Button(onClick = onWrongAnswerClick) {
+            Text(text = "Wrong")
+        }
+        Button(onClick = onCorrectAnswerClick) {
+            Text(text = "Correct")
         }
     }
 }

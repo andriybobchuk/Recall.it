@@ -39,6 +39,7 @@ class CardsViewModel(
     fun changeCardStatus(status: Status) {
         _currentCard.value?.let {
             repository.changeCardStatus(it.id, status)
+            _currentCard.value = it.copy(status = status)
         }
     }
 }
