@@ -20,7 +20,6 @@ import com.recallit.presentation.component.Toolbars
 fun PacksScreen(
     viewModel: PacksViewModel = koinViewModel(),
     onPackClick: (packId: Int) -> Unit,
-    bottomNavbar: @Composable () -> Unit
 ) {
     val packs = viewModel.packs.value
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
@@ -31,9 +30,6 @@ fun PacksScreen(
                 title = "My Packs",
                 scrollBehavior = scrollBehavior
             )
-        },
-        bottomBar = {
-            bottomNavbar()
         },
         floatingActionButton = {
             FloatingActionButton(

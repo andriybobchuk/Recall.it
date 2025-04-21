@@ -23,8 +23,7 @@ fun NavigationHost() {
         composable(Screens.packs) {
            PacksScreen(
                onPackClick = { packId ->
-                   navController.navigate("${Screens.cards}/${packId}") },
-               bottomNavbar = { BottomNavigationBar(navController, 0) }
+                   navController.navigate("${Screens.cards}/${packId}") }
            )
         }
         composable(
