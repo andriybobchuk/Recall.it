@@ -27,7 +27,7 @@ fun PacksScreen(
 
     Scaffold(
         topBar = {
-            Toolbars.Primary(
+            Toolbars.Large(
                 title = "My Packs",
                 scrollBehavior = scrollBehavior
             )

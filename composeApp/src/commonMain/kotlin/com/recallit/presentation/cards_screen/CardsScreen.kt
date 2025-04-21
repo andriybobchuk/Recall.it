@@ -57,7 +57,8 @@ fun CardsScreen(
                 CardStatusIndicatorRow(
                     learningCount = currentPack?.cards?.count { it.status == Status.WRONG },
                     unansweredCount = currentPack?.cards?.count { it.status == Status.UNANSWERED },
-                    rightCount = currentPack?.cards?.count { it.status == Status.CORRECT }
+                    rightCount = currentPack?.cards?.count { it.status == Status.CORRECT },
+                    true
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -130,7 +131,7 @@ fun CardStatusIndicatorRow(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        StatusItem(color = MaterialTheme.colorScheme.error, label = "Learning", count = learningCount, hideLabel = hideLabels)
+        StatusItem(color = MaterialTheme.colorScheme.error, label = "Wrong", count = learningCount, hideLabel = hideLabels)
         StatusItem(
             color = MaterialTheme.colorScheme.outline.copy(.7f),
             label = "Reviewing",
