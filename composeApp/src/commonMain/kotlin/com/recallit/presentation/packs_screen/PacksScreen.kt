@@ -8,6 +8,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -23,13 +27,26 @@ fun PacksScreen(
 ) {
     val packs = viewModel.packs.value
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+    val tabTitles = listOf("Mine", "Explore")
+    var selectedTabIndex by remember { mutableStateOf(0) }
 
     Scaffold(
         topBar = {
-            Toolbars.Large(
-                title = "My Packs",
-                scrollBehavior = scrollBehavior
-            )
+            Column {
+                Toolbars.Medium(
+                    title = "Card Packs",
+                    scrollBehavior = scrollBehavior
+                )
+                TabRow(selectedTabIndex = selectedTabIndex) {
+                    tabTitles.forEachIndexed { index, title ->
+                        Tab(
+                            selected = selectedTabIndex == index,
+                            onClick = { selectedTabIndex = index },
+                            text = { Text(title) }
+                        )
+                    }
+                }
+            }
         },
         floatingActionButton = {
             FloatingActionButton(
@@ -40,19 +57,45 @@ fun PacksScreen(
             )
         },
         content = { paddingValues ->
-            Column(modifier = Modifier.padding(paddingValues)) {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(8.dp)
-                ) {
-                    items(packs.size) { index ->
-                        PackCard(pack = packs[index], onCardClick = { onPackClick(packs[index].id) })
-                    }
+            Box(modifier = Modifier.padding(paddingValues)) {
+                when (selectedTabIndex) {
+                    0 -> MyPacksTab(packs, onPackClick)
+                    1 -> ExplorePacksTab(packs, onPackClick)
                 }
             }
+
         }
     )
+}
+
+@Composable
+fun MyPacksTab(packs: List<Pack>, onPackClick: (packId: Int) -> Unit) {
+    Column {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(8.dp)
+        ) {
+            items(packs.size) { index ->
+                PackCard(pack = packs[index], onCardClick = { onPackClick(packs[index].id) })
+            }
+        }
+    }
+}
+
+@Composable
+fun ExplorePacksTab(packs: List<Pack>, onPackClick: (packId: Int) -> Unit) {
+    Column {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(8.dp)
+        ) {
+//            items(packs.size) { index ->
+//                PackCard(pack = packs[index], onCardClick = { onPackClick(packs[index].id) })
+//            }
+        }
+    }
 }
 
 @Composable
